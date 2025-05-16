@@ -1,4 +1,4 @@
-[
+{
 	{
 		"name": "V1.0.1",
 		"date": "May 10, 2025",
@@ -13,5 +13,11 @@
 		"name": "V1.1.5",
 		"date": "May 16, 2025",
 		"content": "– Added proper main menu along with the Changes tab (YOU ARE HERE :D).\n\n– Slightly improved Game Over screen."
+	},
+	{
+		"name": "TEST",
+		"date": "May 16, 2025",
+		"content": "TEST TEXT"
 	}
-]
+
+}
