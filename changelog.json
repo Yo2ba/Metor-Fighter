@@ -1,0 +1,17 @@
+[
+	{
+		"name": "V1.0.1",
+		"date": "May 10, 2025",
+		"content": "– Fixed a bug when meteor counter didn't reset after restart."
+	},
+	{
+		"name": "V1.1",
+		"date": "May 11, 2025",
+		"content": "– Added The Ship upgrade which can be achieved by destroying 50 meteors.\n\n– Upgrade increases player speed, laser capacity, recharge speed and decreases reload time.\n\n– Meteor spawn speed was slightly adjusted."
+	},
+	{
+		"name": "V1.1.5",
+		"date": "May 16, 2025",
+		"content": "– Added proper main menu along with the Changes tab (YOU ARE HERE :D).\n\n– Slightly improved Game Over screen."
+	}
+]
