@@ -1,0 +1,142 @@
+[gd_scene load_steps=8 format=3 uid="uid://clc7kjc012m3c"]
+
+[ext_resource type="Script" uid="uid://1kw5p4374fym" path="res://scripts/pauser.gd" id="1_5d2l8"]
+[ext_resource type="FontFile" uid="uid://dppr83sl30x4e" path="res://assets/Font/Kenney Future.ttf" id="1_hdmo1"]
+[ext_resource type="Script" uid="uid://e75x6218em3v" path="res://scripts/pause_grid.gd" id="3_kukqi"]
+[ext_resource type="Texture2D" uid="uid://c3e8g84bxol83" path="res://assets/ui/UI_spritesheet.png" id="4_5d2l8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5d2l8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7l7mv"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.588235)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kukqi"]
+atlas = ExtResource("4_5d2l8")
+region = Rect2(200, 68, 32, 32)
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5d2l8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Grid" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_kukqi")
+GRID_COLOR = Color(1, 1, 1, 0.0980392)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -20.0
+offset_right = 62.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paused" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.392157)
+theme_override_fonts/font = ExtResource("1_hdmo1")
+theme_override_font_sizes/font_size = 32
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="unpause" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.392157)
+theme_override_fonts/font = ExtResource("1_hdmo1")
+theme_override_font_sizes/font_size = 16
+text = "Press ESC to unpause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.2375
+offset_top = -45.335
+offset_right = 44.2375
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 64
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(92, 48)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5d2l8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7l7mv")
+disabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Control" type="Control" parent="MarginContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Coins" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -9.5
+offset_bottom = 9.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kukqi")
+stretch_mode = 4

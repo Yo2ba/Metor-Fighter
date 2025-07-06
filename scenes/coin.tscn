@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://treiepqqcq63"]
+
+[ext_resource type="Script" uid="uid://x68ewpgs0qxo" path="res://scripts/coin.gd" id="1_i64fm"]
+[ext_resource type="Texture2D" uid="uid://c3e8g84bxol83" path="res://assets/ui/UI_spritesheet.png" id="2_11l1o"]
+[ext_resource type="AudioStream" uid="uid://bqrlvcpk3jmq5" path="res://assets/sfx/pickupCoin.wav" id="3_11l1o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i64fm"]
+radius = 17.1172
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d14el"]
+atlas = ExtResource("2_11l1o")
+region = Rect2(200, 68, 32, 32)
+
+[node name="Coin" type="Area2D"]
+z_index = 4096
+collision_layer = 4097
+collision_mask = 128
+script = ExtResource("1_i64fm")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i64fm")
+
+[node name="CoinIcon" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_d14el")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_11l1o")
+volume_db = -16.029
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,323 @@
+[gd_scene load_steps=23 format=3 uid="uid://cdgq6lmsfd8k"]
+
+[ext_resource type="Script" uid="uid://dql6j44eg5nob" path="res://scripts/loading_screen.gd" id="1_hprjd"]
+[ext_resource type="Script" uid="uid://cxcb3hspa0hpt" path="res://scripts/grid.gd" id="2_e7oyx"]
+[ext_resource type="Texture2D" uid="uid://dciy8f06oyvfe" path="res://assets/ship_sprites/ship_spritesheet.png" id="3_pvqkx"]
+[ext_resource type="Script" uid="uid://diavuck7qn03e" path="res://scripts/loading_icon.gd" id="5_pu4a1"]
+[ext_resource type="Texture2D" uid="uid://c3e8g84bxol83" path="res://assets/ui/UI_spritesheet.png" id="7_pvqkx"]
+[ext_resource type="Texture2D" uid="uid://hivsv7y4iknn" path="res://assets/ui/UI_inputs_spritesheet.png" id="7_v1mdd"]
+[ext_resource type="FontFile" uid="uid://dppr83sl30x4e" path="res://assets/Font/Kenney Future.ttf" id="14_pvqkx"]
+[ext_resource type="Texture2D" uid="uid://pgg2r6qoldc8" path="res://assets/laserBlue01.png" id="16_bqhjm"]
+
+[sub_resource type="Gradient" id="Gradient_e7oyx"]
+colors = PackedColorArray(0, 0, 0, 1, 0.117647, 0.380392, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bqhjm"]
+gradient = SubResource("Gradient_e7oyx")
+fill_to = Vector2(0, 4)
+metadata/_snap_count = 2
+
+[sub_resource type="Gradient" id="Gradient_bqhjm"]
+colors = PackedColorArray(0, 0, 0, 1, 0.117647, 0.380392, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eb3t5"]
+gradient = SubResource("Gradient_bqhjm")
+fill_to = Vector2(0, 5)
+metadata/_snap_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7oyx"]
+atlas = ExtResource("3_pvqkx")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1mdd"]
+atlas = ExtResource("7_pvqkx")
+region = Rect2(132, 68, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5slh2"]
+atlas = ExtResource("7_pvqkx")
+region = Rect2(96, 104, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqhjm"]
+atlas = ExtResource("7_pvqkx")
+region = Rect2(96, 68, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if62a"]
+atlas = ExtResource("7_v1mdd")
+region = Rect2(0, 0, 48, 48)
+margin = Rect2(8, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvqkx"]
+atlas = ExtResource("7_v1mdd")
+region = Rect2(104, 0, 48, 48)
+margin = Rect2(8, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amnj2"]
+atlas = ExtResource("7_v1mdd")
+region = Rect2(156, 0, 48, 48)
+margin = Rect2(8, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7y4a"]
+atlas = ExtResource("7_v1mdd")
+region = Rect2(0, 52, 48, 48)
+margin = Rect2(8, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcv3i"]
+atlas = ExtResource("7_v1mdd")
+region = Rect2(52, 52, 48, 48)
+margin = Rect2(8, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdkap"]
+atlas = ExtResource("7_v1mdd")
+region = Rect2(0, 0, 48, 48)
+margin = Rect2(8, 8, 16, 16)
+
+[node name="LoadingScreen" type="Control" node_paths=PackedStringArray("TipLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hprjd")
+TipLabel = NodePath("TipPanel/HBoxContainer/Tip")
+tip = Array[String](["Press Esc to pause or upgrade your Ship.", "You can earn coins by destroying meteors.", "Pro tip: Don't die!", "If you die, you lose all the progress and upgrades.", "if(gameover == true)  {delete(system32);}", "Press ~ to open console."])
+
+[node name="GradientBG" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_bqhjm")
+
+[node name="GRID" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_e7oyx")
+GRID_COLOR = Color(1, 1, 1, 0.0980392)
+
+[node name="GradientBG2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_eb3t5")
+
+[node name="ShipCenter" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ship" type="TextureRect" parent="ShipCenter"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_e7oyx")
+
+[node name="LoadingIcon" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1056.0
+offset_top = 544.0
+offset_right = 1096.0
+offset_bottom = 584.0
+script = ExtResource("5_pu4a1")
+
+[node name="loading_outer" type="Sprite2D" parent="LoadingIcon"]
+texture = SubResource("AtlasTexture_v1mdd")
+
+[node name="loading_inner" type="Sprite2D" parent="LoadingIcon"]
+texture = SubResource("AtlasTexture_5slh2")
+
+[node name="TipPanel" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_bottom = 88
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TipPanel"]
+layout_mode = 2
+
+[node name="TipIcon" type="TextureRect" parent="TipPanel/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_bqhjm")
+
+[node name="Control" type="Control" parent="TipPanel/HBoxContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Tip" type="Label" parent="TipPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "[tip]"
+
+[node name="SkipTip" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SkipTip"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SkipTip/HBoxContainer"]
+layout_mode = 2
+text = "Press"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="SkipTip/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_if62a")
+expand_mode = 2
+
+[node name="Label2" type="Label" parent="SkipTip/HBoxContainer"]
+layout_mode = 2
+text = "for next hint."
+horizontal_alignment = 1
+
+[node name="WASD" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 448.0
+offset_bottom = 128.0
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 256
+
+[node name="GridContainer" type="GridContainer" parent="WASD"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="Control" type="Control" parent="WASD/GridContainer"]
+layout_mode = 2
+
+[node name="W" type="TextureRect" parent="WASD/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_pvqkx")
+stretch_mode = 2
+
+[node name="Control2" type="Control" parent="WASD/GridContainer"]
+layout_mode = 2
+
+[node name="A" type="TextureRect" parent="WASD/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_amnj2")
+
+[node name="S" type="TextureRect" parent="WASD/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_f7y4a")
+
+[node name="D" type="TextureRect" parent="WASD/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_gcv3i")
+
+[node name="Movement" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 448.0
+offset_bottom = 128.0
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 390
+
+[node name="Label" type="Label" parent="Movement"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Throttle and strafe"
+horizontal_alignment = 1
+
+[node name="Fire" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -448.0
+offset_bottom = 384.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 320
+theme_override_constants/margin_right = 256
+
+[node name="TextureRect" type="TextureRect" parent="Fire"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_hdkap")
+stretch_mode = 2
+
+[node name="Shoot" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -448.0
+offset_bottom = 240.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 390
+theme_override_constants/margin_right = 256
+
+[node name="Label" type="Label" parent="Shoot"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Fire laser"
+horizontal_alignment = 1
+
+[node name="ControlsMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_right = 120.0
+offset_bottom = 116.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 75
+
+[node name="Controls" type="Label" parent="ControlsMargin"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("14_pvqkx")
+theme_override_font_sizes/font_size = 36
+text = "CONTROLS"
+horizontal_alignment = 1
+
+[node name="LaserBlue01" type="Sprite2D" parent="."]
+position = Vector2(576, 228)
+texture = ExtResource("16_bqhjm")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(608, 224, 672, 224, 768, 320)
+width = 1.0
+antialiased = true
+
+[node name="LeastWaitingTime" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LeastWaitingTime" to="." method="_on_least_waiting_time_timeout"]

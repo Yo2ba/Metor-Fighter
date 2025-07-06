@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://daqs11ge7mkcu"]
+
+[ext_resource type="Script" uid="uid://ct8qflm3ygkck" path="res://scripts/console.gd" id="1_gf67r"]
+[ext_resource type="Theme" uid="uid://dsw63j6va7usr" path="res://assets/ui_theme.tres" id="2_xil4p"]
+[ext_resource type="FontFile" uid="uid://nt0af6iljmk5" path="res://assets/Font/andale-mono.ttf" id="3_t6k7n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6k7n"]
+bg_color = Color(0.8, 0.8, 0.8, 0.392157)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tk5gh"]
+bg_color = Color(0.219608, 0.219608, 0.219608, 0.784314)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t6k7n"]
+
+[node name="Console" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -240.0
+offset_right = 240.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gf67r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_t6k7n")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t6k7n")
+theme_override_font_sizes/font_size = 16
+text = "Console"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_tk5gh")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ConsoleText" type="RichTextLabel" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+theme_override_constants/line_separation = 1
+theme_override_fonts/normal_font = ExtResource("3_t6k7n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t6k7n")
+scroll_following = true
+vertical_alignment = 2
+selection_enabled = true
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+theme = ExtResource("2_xil4p")
+theme_override_fonts/font = ExtResource("3_t6k7n")
+max_length = 100
+keep_editing_on_text_submit = true
+caret_blink = true

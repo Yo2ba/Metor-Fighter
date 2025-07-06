@@ -1,0 +1,89 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dsw63j6va7usr"]
+
+[ext_resource type="FontFile" uid="uid://dppr83sl30x4e" path="res://assets/Font/Kenney Future.ttf" id="1_wf4hb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_con2f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wf4hb"]
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.784314, 0.784314, 0.784314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_con2f"]
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="ImageTexture" id="ImageTexture_wf4hb"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_rv7sn"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_n3ym3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv7sn"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wf4hb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3ym3"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.392157)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.392157)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.784314, 0.784314, 0.784314, 1)
+Button/colors/font_hover_pressed_color = Color(0.784314, 0.784314, 0.784314, 1)
+Button/colors/font_pressed_color = Color(0.784314, 0.784314, 0.784314, 1)
+Button/fonts/font = ExtResource("1_wf4hb")
+Button/styles/focus = SubResource("StyleBoxEmpty_con2f")
+Button/styles/hover = SubResource("StyleBoxFlat_wf4hb")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_wf4hb")
+Button/styles/normal = SubResource("StyleBoxFlat_con2f")
+Button/styles/pressed = SubResource("StyleBoxFlat_wf4hb")
+HSlider/icons/grabber = SubResource("ImageTexture_wf4hb")
+HSlider/icons/grabber_disabled = SubResource("ImageTexture_rv7sn")
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_n3ym3")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_rv7sn")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_rv7sn")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_wf4hb")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_n3ym3")

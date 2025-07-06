@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0kfd12pv300u"]
+
+[ext_resource type="Script" uid="uid://5l57864oxog1" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bcjvf7d0e1dt0" path="res://assets/Large 1024x1024/Purple Nebula/Purple_Nebula_02-1024x1024.png" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dquc78x1tarym" path="res://player.tscn" id="3_h2yge"]
+[ext_resource type="FontFile" uid="uid://dppr83sl30x4e" path="res://assets/Font/Kenney Future.ttf" id="5_lquwl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7dm0k"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ig7tw"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0xm2m"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h2yge"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_1bvp3")
+
+[node name="ScreenBorders" type="StaticBody2D" parent="."]
+
+[node name="TopBorder" type="CollisionShape2D" parent="ScreenBorders"]
+shape = SubResource("WorldBoundaryShape2D_7dm0k")
+
+[node name="LeftBorder" type="CollisionShape2D" parent="ScreenBorders"]
+shape = SubResource("WorldBoundaryShape2D_ig7tw")
+
+[node name="RightBorder" type="CollisionShape2D" parent="ScreenBorders"]
+position = Vector2(1152, 648)
+shape = SubResource("WorldBoundaryShape2D_0xm2m")
+
+[node name="BottomBorder" type="CollisionShape2D" parent="ScreenBorders"]
+position = Vector2(1152, 648)
+shape = SubResource("WorldBoundaryShape2D_h2yge")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("2_0xm2m")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(571, 371)
+
+[node name="Lasers" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 10
+
+[node name="Score" type="Label" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_lquwl")
+theme_override_font_sizes/font_size = 30
+text = "1323"
+horizontal_alignment = 1
+
+[connection signal="fire" from="Player" to="." method="_on_player_fire"]
