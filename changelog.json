@@ -1,6 +1,13 @@
 {
 	"versions": [
 		{
+			"version": "MUHA",
+			"date": "MUHA",
+			"changes": [
+				"RAHMARARAT"
+				]
+		},
+		{
 			"version": "0.2.1",
 			"date": "June 10, 2025",
 			"changes": [
@@ -55,3 +62,4 @@
 		}
 	]
 }
+
