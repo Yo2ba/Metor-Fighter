@@ -1,23 +1,57 @@
 {
-	{
-		"name": "V1.0.1",
-		"date": "May 10, 2025",
-		"content": "– Fixed a bug when meteor counter didn't reset after restart."
-	},
-	{
-		"name": "V1.1",
-		"date": "May 11, 2025",
-		"content": "– Added The Ship upgrade which can be achieved by destroying 50 meteors.\n\n– Upgrade increases player speed, laser capacity, recharge speed and decreases reload time.\n\n– Meteor spawn speed was slightly adjusted."
-	},
-	{
-		"name": "V1.1.5",
-		"date": "May 16, 2025",
-		"content": "– Added proper main menu along with the Changes tab (YOU ARE HERE :D).\n\n– Slightly improved Game Over screen."
-	},
-	{
-		"name": "TEST",
-		"date": "May 16, 2025",
-		"content": "TEST TEXT"
-	}
-
+	"versions": [
+		{
+			"version": "0.2.1",
+			"date": "June 10, 2025",
+			"changes": [
+				"Implemented touch control, which works on mobile devices by default or can be force enabled in settings.",
+				"Added UI click sound for buttons.",
+				"Fixed strafe animation inconsistency."
+				]
+		},
+		{
+			"version": "0.2.0",
+			"date": "June 3, 2025",
+			"changes": [
+				"Overhauled main menu with new game logo and News tab (contents WIP).",
+				"Added loading screen with useful tips.",
+				"Added dev console menu which can be accessed by pressing [~] while game is paused.",
+				"Other minor UI changes.",
+				"Sprites are now better optimized.",
+				"Fixed an issue with volume sliders which used to handle SFX volume incorrectly."
+				]
+		},
+		{
+			"version": "0.1.3",
+			"date": "May 17, 2025",
+			"changes": [
+				"Added settings menu with music and sfx volume sliders.",
+				"Improved UI background with gradient variations."
+				]
+		},
+		{
+			"version": "0.1.2",
+			"date": "May 16, 2025",
+			"changes": [
+				"Added proper main menu along with the Changes tab (YOU ARE HERE :D).",
+				"Slightly improved Game Over screen."
+				]
+		},
+		{
+			"version": "0.1.1",
+			"date": "May 11, 2025",
+			"changes": [
+				"Added The Ship upgrade which can be achieved by destroying 50 meteors.",
+				"Upgrade increases player speed, laser capacity, recharge speed and decreases reload time.",
+				"Meteor spawn speed was slightly adjusted."
+				]
+		},
+		{
+			"version": "0.1.0",
+			"date": "May 10, 2025",
+			"changes": [
+				"Fixed a bug when meteor counter didn't reset after restart."
+				]
+		}
+	]
 }
