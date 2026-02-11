@@ -1,18 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://di4kxcly0nffh"]
+[gd_scene format=3 uid="uid://di4kxcly0nffh"]
 
 [ext_resource type="Script" uid="uid://cxcb3hspa0hpt" path="res://scripts/grid.gd" id="1_bh0x8"]
 [ext_resource type="PackedScene" uid="uid://r8i3542pvndn" path="res://scenes/main_menu.tscn" id="2_bh0x8"]
 [ext_resource type="AudioStream" uid="uid://k1p5yhb3stup" path="res://assets/ui/UI_click.wav" id="4_rducx"]
 
 [sub_resource type="Gradient" id="Gradient_wu84c"]
-colors = PackedColorArray(0, 0, 0.176471, 1, 0, 0, 0.0588235, 1)
+colors = PackedColorArray(0.2784314, 0.19607843, 0.5568628, 1, 0.05882353, 0.05490196, 0.18431373, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wbwtb"]
 gradient = SubResource("Gradient_wu84c")
 fill_to = Vector2(0, 1)
 metadata/_snap_count = 2
 
-[node name="Ready" type="Control"]
+[node name="Ready" type="Control" unique_id=1312892003]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="Control" parent="."]
+[node name="BG" type="Control" parent="." unique_id=773393530]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +28,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GradientBG2" type="TextureRect" parent="BG"]
+[node name="GradientBG2" type="TextureRect" parent="BG" unique_id=1228972515]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_wbwtb")
 
-[node name="GRID" type="Control" parent="BG"]
+[node name="GRID" type="Control" parent="BG" unique_id=481972199]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,9 +47,9 @@ grow_vertical = 2
 script = ExtResource("1_bh0x8")
 GRID_COLOR = Color(1, 1, 1, 0.0196078)
 
-[node name="NewMenu" parent="." instance=ExtResource("2_bh0x8")]
+[node name="NewMenu" parent="." unique_id=601405611 instance=ExtResource("2_bh0x8")]
 layout_mode = 1
 
-[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="." unique_id=316482508]
 unique_name_in_owner = true
 stream = ExtResource("4_rducx")

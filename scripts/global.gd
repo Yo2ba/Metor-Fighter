@@ -3,6 +3,8 @@ extends Node
 @onready var screen_height = get_viewport().get_visible_rect().size[1]
 signal leveled_up
 
+var game_version: String
+
 var gameover: bool = false
 var destroyed_meteors: int = 0
 var score: int = 0
@@ -13,7 +15,6 @@ var level: int = 1
 var music_volume: float = 1.0
 var sfxx_volume: float = 1.0
 @onready var coins: int = 0
-
 
 func _process(_delta: float) -> void:
 	if metetor_count >= 50 and level == 1:
