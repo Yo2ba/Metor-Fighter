@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://cdgq6lmsfd8k"]
+[gd_scene format=3 uid="uid://cdgq6lmsfd8k"]
 
 [ext_resource type="Script" uid="uid://dql6j44eg5nob" path="res://scripts/loading_screen.gd" id="1_hprjd"]
 [ext_resource type="Script" uid="uid://cxcb3hspa0hpt" path="res://scripts/grid.gd" id="2_e7oyx"]
 [ext_resource type="Texture2D" uid="uid://dciy8f06oyvfe" path="res://assets/ship_sprites/ship_spritesheet.png" id="3_pvqkx"]
-[ext_resource type="Script" uid="uid://diavuck7qn03e" path="res://scripts/loading_icon.gd" id="5_pu4a1"]
+[ext_resource type="PackedScene" uid="uid://cn7ek4rlyc8gp" path="res://scenes/loading_icon.tscn" id="4_if62a"]
 [ext_resource type="Texture2D" uid="uid://c3e8g84bxol83" path="res://assets/ui/UI_spritesheet.png" id="7_pvqkx"]
 [ext_resource type="Texture2D" uid="uid://hivsv7y4iknn" path="res://assets/ui/UI_inputs_spritesheet.png" id="7_v1mdd"]
 [ext_resource type="FontFile" uid="uid://dppr83sl30x4e" path="res://assets/Font/Kenney Future.ttf" id="14_pvqkx"]
@@ -28,14 +28,6 @@ metadata/_snap_count = 2
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7oyx"]
 atlas = ExtResource("3_pvqkx")
 region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v1mdd"]
-atlas = ExtResource("7_pvqkx")
-region = Rect2(132, 68, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5slh2"]
-atlas = ExtResource("7_pvqkx")
-region = Rect2(96, 104, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bqhjm"]
 atlas = ExtResource("7_pvqkx")
@@ -71,7 +63,7 @@ atlas = ExtResource("7_v1mdd")
 region = Rect2(0, 0, 48, 48)
 margin = Rect2(8, 8, 16, 16)
 
-[node name="LoadingScreen" type="Control" node_paths=PackedStringArray("TipLabel")]
+[node name="LoadingScreen" type="Control" unique_id=114164787 node_paths=PackedStringArray("TipLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,7 +74,7 @@ script = ExtResource("1_hprjd")
 TipLabel = NodePath("TipPanel/HBoxContainer/Tip")
 tip = Array[String](["Press Esc to pause or upgrade your Ship.", "You can earn coins by destroying meteors.", "Pro tip: Don't die!", "If you die, you lose all the progress and upgrades.", "if(gameover == true)  {delete(system32);}", "Press ~ to open console."])
 
-[node name="GradientBG" type="TextureRect" parent="."]
+[node name="GradientBG" type="TextureRect" parent="." unique_id=1638652510]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -92,7 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_bqhjm")
 
-[node name="GRID" type="Control" parent="."]
+[node name="GRID" type="Control" parent="." unique_id=1841553687]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -103,7 +95,7 @@ grow_vertical = 2
 script = ExtResource("2_e7oyx")
 GRID_COLOR = Color(1, 1, 1, 0.0980392)
 
-[node name="GradientBG2" type="TextureRect" parent="."]
+[node name="GradientBG2" type="TextureRect" parent="." unique_id=1494197051]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -113,7 +105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_eb3t5")
 
-[node name="ShipCenter" type="CenterContainer" parent="."]
+[node name="ShipCenter" type="CenterContainer" parent="." unique_id=193728310]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -127,25 +119,23 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Ship" type="TextureRect" parent="ShipCenter"]
+[node name="Ship" type="TextureRect" parent="ShipCenter" unique_id=352532050]
 layout_mode = 2
 texture = SubResource("AtlasTexture_e7oyx")
 
-[node name="LoadingIcon" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 1056.0
-offset_top = 544.0
-offset_right = 1096.0
-offset_bottom = 584.0
-script = ExtResource("5_pu4a1")
+[node name="LoadingIcon" parent="." unique_id=662133916 instance=ExtResource("4_if62a")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.91700006
+anchor_top = 0.84000003
+anchor_right = 0.91700006
+anchor_bottom = 0.84000003
+offset_left = -0.3840332
+offset_top = -0.32000732
+offset_right = 39.615967
+offset_bottom = 39.679993
 
-[node name="loading_outer" type="Sprite2D" parent="LoadingIcon"]
-texture = SubResource("AtlasTexture_v1mdd")
-
-[node name="loading_inner" type="Sprite2D" parent="LoadingIcon"]
-texture = SubResource("AtlasTexture_5slh2")
-
-[node name="TipPanel" type="MarginContainer" parent="."]
+[node name="TipPanel" type="MarginContainer" parent="." unique_id=1828291025]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -156,23 +146,23 @@ grow_vertical = 0
 theme_override_constants/margin_left = 80
 theme_override_constants/margin_bottom = 88
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TipPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TipPanel" unique_id=187500288]
 layout_mode = 2
 
-[node name="TipIcon" type="TextureRect" parent="TipPanel/HBoxContainer"]
+[node name="TipIcon" type="TextureRect" parent="TipPanel/HBoxContainer" unique_id=1758123185]
 layout_mode = 2
 texture = SubResource("AtlasTexture_bqhjm")
 
-[node name="Control" type="Control" parent="TipPanel/HBoxContainer"]
+[node name="Control" type="Control" parent="TipPanel/HBoxContainer" unique_id=1118659570]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
-[node name="Tip" type="Label" parent="TipPanel/HBoxContainer"]
+[node name="Tip" type="Label" parent="TipPanel/HBoxContainer" unique_id=636475248]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "[tip]"
 
-[node name="SkipTip" type="MarginContainer" parent="."]
+[node name="SkipTip" type="MarginContainer" parent="." unique_id=233058643]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -186,74 +176,74 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SkipTip"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SkipTip" unique_id=407611262]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SkipTip/HBoxContainer"]
+[node name="Label" type="Label" parent="SkipTip/HBoxContainer" unique_id=156772917]
 layout_mode = 2
 text = "Press"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SkipTip/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="SkipTip/HBoxContainer" unique_id=1152846865]
 layout_mode = 2
 texture = SubResource("AtlasTexture_if62a")
 expand_mode = 2
 
-[node name="Label2" type="Label" parent="SkipTip/HBoxContainer"]
+[node name="Label2" type="Label" parent="SkipTip/HBoxContainer" unique_id=1346710859]
 layout_mode = 2
 text = "for next hint."
 horizontal_alignment = 1
 
-[node name="WASD" type="MarginContainer" parent="."]
+[node name="WASD" type="MarginContainer" parent="." unique_id=1345673148]
 layout_mode = 1
 offset_right = 448.0
 offset_bottom = 128.0
 theme_override_constants/margin_left = 256
 theme_override_constants/margin_top = 256
 
-[node name="GridContainer" type="GridContainer" parent="WASD"]
+[node name="GridContainer" type="GridContainer" parent="WASD" unique_id=2038090478]
 layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 3
 
-[node name="Control" type="Control" parent="WASD/GridContainer"]
+[node name="Control" type="Control" parent="WASD/GridContainer" unique_id=1059356437]
 layout_mode = 2
 
-[node name="W" type="TextureRect" parent="WASD/GridContainer"]
+[node name="W" type="TextureRect" parent="WASD/GridContainer" unique_id=456892112]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pvqkx")
 stretch_mode = 2
 
-[node name="Control2" type="Control" parent="WASD/GridContainer"]
+[node name="Control2" type="Control" parent="WASD/GridContainer" unique_id=1176322509]
 layout_mode = 2
 
-[node name="A" type="TextureRect" parent="WASD/GridContainer"]
+[node name="A" type="TextureRect" parent="WASD/GridContainer" unique_id=1840215359]
 layout_mode = 2
 texture = SubResource("AtlasTexture_amnj2")
 
-[node name="S" type="TextureRect" parent="WASD/GridContainer"]
+[node name="S" type="TextureRect" parent="WASD/GridContainer" unique_id=167339139]
 layout_mode = 2
 texture = SubResource("AtlasTexture_f7y4a")
 
-[node name="D" type="TextureRect" parent="WASD/GridContainer"]
+[node name="D" type="TextureRect" parent="WASD/GridContainer" unique_id=2099086593]
 layout_mode = 2
 texture = SubResource("AtlasTexture_gcv3i")
 
-[node name="Movement" type="MarginContainer" parent="."]
+[node name="Movement" type="MarginContainer" parent="." unique_id=1314336101]
 layout_mode = 1
 offset_right = 448.0
 offset_bottom = 128.0
 theme_override_constants/margin_left = 256
 theme_override_constants/margin_top = 390
 
-[node name="Label" type="Label" parent="Movement"]
+[node name="Label" type="Label" parent="Movement" unique_id=1784385991]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Throttle and strafe"
 horizontal_alignment = 1
 
-[node name="Fire" type="MarginContainer" parent="."]
+[node name="Fire" type="MarginContainer" parent="." unique_id=1590590158]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -264,14 +254,14 @@ grow_horizontal = 0
 theme_override_constants/margin_top = 320
 theme_override_constants/margin_right = 256
 
-[node name="TextureRect" type="TextureRect" parent="Fire"]
+[node name="TextureRect" type="TextureRect" parent="Fire" unique_id=1636520784]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_hdkap")
 stretch_mode = 2
 
-[node name="Shoot" type="MarginContainer" parent="."]
+[node name="Shoot" type="MarginContainer" parent="." unique_id=1491108093]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -282,13 +272,13 @@ grow_horizontal = 0
 theme_override_constants/margin_top = 390
 theme_override_constants/margin_right = 256
 
-[node name="Label" type="Label" parent="Shoot"]
+[node name="Label" type="Label" parent="Shoot" unique_id=1049614666]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Fire laser"
 horizontal_alignment = 1
 
-[node name="ControlsMargin" type="MarginContainer" parent="."]
+[node name="ControlsMargin" type="MarginContainer" parent="." unique_id=1902833575]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -299,23 +289,23 @@ offset_bottom = 116.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 75
 
-[node name="Controls" type="Label" parent="ControlsMargin"]
+[node name="Controls" type="Label" parent="ControlsMargin" unique_id=63961988]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("14_pvqkx")
 theme_override_font_sizes/font_size = 36
 text = "CONTROLS"
 horizontal_alignment = 1
 
-[node name="LaserBlue01" type="Sprite2D" parent="."]
+[node name="LaserBlue01" type="Sprite2D" parent="." unique_id=1852177097]
 position = Vector2(576, 228)
 texture = ExtResource("16_bqhjm")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="." unique_id=220340779]
 points = PackedVector2Array(608, 224, 672, 224, 768, 320)
 width = 1.0
 antialiased = true
 
-[node name="LeastWaitingTime" type="Timer" parent="."]
+[node name="LeastWaitingTime" type="Timer" parent="." unique_id=514547562]
 wait_time = 3.0
 one_shot = true
 autostart = true

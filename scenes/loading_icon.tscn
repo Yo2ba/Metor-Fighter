@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cn7ek4rlyc8gp"]
+
+[ext_resource type="Script" uid="uid://diavuck7qn03e" path="res://scripts/loading_icon.gd" id="1_x7i3p"]
+[ext_resource type="Texture2D" uid="uid://c3e8g84bxol83" path="res://assets/ui/UI_spritesheet.png" id="2_kex30"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1mdd"]
+atlas = ExtResource("2_kex30")
+region = Rect2(132, 68, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5slh2"]
+atlas = ExtResource("2_kex30")
+region = Rect2(96, 104, 32, 32)
+
+[node name="LoadingIcon" type="Control" unique_id=662133916]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1056.0
+offset_top = 544.0
+offset_right = 1096.0
+offset_bottom = 584.0
+script = ExtResource("1_x7i3p")
+
+[node name="loading_outer" type="Sprite2D" parent="." unique_id=1655012698]
+texture = SubResource("AtlasTexture_v1mdd")
+
+[node name="loading_inner" type="Sprite2D" parent="." unique_id=1901505201]
+texture = SubResource("AtlasTexture_5slh2")

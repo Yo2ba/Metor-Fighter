@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfqtg4tx641e1"]
+[gd_scene format=3 uid="uid://cfqtg4tx641e1"]
 
 [ext_resource type="FontFile" uid="uid://dppr83sl30x4e" path="res://assets/Font/Kenney Future.ttf" id="1_54bft"]
 [ext_resource type="Script" uid="uid://c7pklq4buoc1p" path="res://scripts/changelogs.gd" id="1_ufipq"]
 [ext_resource type="Texture2D" uid="uid://c3e8g84bxol83" path="res://assets/ui/UI_spritesheet.png" id="3_7rqbr"]
 [ext_resource type="Script" uid="uid://cndkd51n2ofdf" path="res://scripts/ui_texture_button.gd" id="4_cq0hl"]
+[ext_resource type="PackedScene" uid="uid://cn7ek4rlyc8gp" path="res://scenes/loading_icon.tscn" id="5_lwy03"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufipq"]
 bg_color = Color(0.0509804, 0.0509804, 0.117647, 0.588235)
@@ -20,7 +21,14 @@ corner_radius_bottom_left = 8
 atlas = ExtResource("3_7rqbr")
 region = Rect2(60, 68, 32, 32)
 
-[node name="Changelogs" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwy03"]
+bg_color = Color(0.28627452, 0.4, 0.50980395, 0.1254902)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Changelogs" type="Control" unique_id=809177124 node_paths=PackedStringArray("http_request", "text_holder")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,8 +36,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ufipq")
+http_request = NodePath("HTTPRequest")
+text_holder = NodePath("Text/TitleContents/ContentMargin/BG/TextMargin/ScrollContainer/Grouped")
 
-[node name="Text" type="MarginContainer" parent="."]
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=2760966]
+
+[node name="Text" type="MarginContainer" parent="." unique_id=396686217]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,257 +53,72 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 128
 theme_override_constants/margin_bottom = 64
 
-[node name="Panel" type="Panel" parent="Text"]
+[node name="Panel" type="Panel" parent="Text" unique_id=831883391]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ufipq")
 
-[node name="TitleContents" type="VBoxContainer" parent="Text"]
+[node name="TitleContents" type="VBoxContainer" parent="Text" unique_id=1140363937]
 layout_mode = 2
-theme_override_constants/separation = 32
+theme_override_constants/separation = 16
 
-[node name="LabelMargin" type="MarginContainer" parent="Text/TitleContents"]
+[node name="LabelMargin" type="MarginContainer" parent="Text/TitleContents" unique_id=1596011415]
 layout_mode = 2
 theme_override_constants/margin_top = 24
 
-[node name="Label" type="Label" parent="Text/TitleContents/LabelMargin"]
+[node name="Label" type="Label" parent="Text/TitleContents/LabelMargin" unique_id=1859409163]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_54bft")
 theme_override_font_sizes/font_size = 36
 text = "Changes"
 horizontal_alignment = 1
 
-[node name="CloseMargin" type="MarginContainer" parent="Text/TitleContents/LabelMargin"]
+[node name="CloseMargin" type="MarginContainer" parent="Text/TitleContents/LabelMargin" unique_id=239754845]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_right = 24
 
-[node name="CloseBtn" type="TextureButton" parent="Text/TitleContents/LabelMargin/CloseMargin"]
+[node name="CloseBtn" type="TextureButton" parent="Text/TitleContents/LabelMargin/CloseMargin" unique_id=1796994499]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_cq0hl")
 stretch_mode = 4
 script = ExtResource("4_cq0hl")
 
-[node name="ContentMargin" type="MarginContainer" parent="Text/TitleContents"]
+[node name="ContentMargin" type="MarginContainer" parent="Text/TitleContents" unique_id=303329955]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="BG" type="PanelContainer" parent="Text/TitleContents/ContentMargin" unique_id=1159213886]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lwy03")
+
+[node name="CenterStatus" type="CenterContainer" parent="Text/TitleContents/ContentMargin/BG" unique_id=310118274]
+layout_mode = 2
+
+[node name="LoadingIcon" parent="Text/TitleContents/ContentMargin/BG/CenterStatus" unique_id=662133916 instance=ExtResource("5_lwy03")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ErrorCode" type="Label" parent="Text/TitleContents/ContentMargin/BG/CenterStatus" unique_id=1132370639]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="TextMargin" type="MarginContainer" parent="Text/TitleContents/ContentMargin/BG" unique_id=2129384076]
+layout_mode = 2
 theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 16
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Text/TitleContents/ContentMargin"]
-custom_minimum_size = Vector2(256, 256)
+[node name="ScrollContainer" type="ScrollContainer" parent="Text/TitleContents/ContentMargin/BG/TextMargin" unique_id=142724010]
 layout_mode = 2
-size_flags_vertical = 3
-scroll_horizontal_custom_step = -0.2
-scroll_vertical_custom_step = -0.2
 
-[node name="Grouped" type="VBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer"]
+[node name="Grouped" type="VBoxContainer" parent="Text/TitleContents/ContentMargin/BG/TextMargin/ScrollContainer" unique_id=1772034992]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 24
-
-[node name="V0_2_1" type="VBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="PostTitleDate" type="HBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_2_1"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 24
-
-[node name="Version" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_2_1/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("1_54bft")
-theme_override_font_sizes/font_size = 24
-text = "V0.2.1"
-
-[node name="ChangeDate" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_2_1/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
-text = "June 10, 2025"
-horizontal_alignment = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_2_1"]
-layout_mode = 2
-text = "– Implemented touch control, which works on mobile devices by default or can be force enabled in settings.
-
-– Added UI click sound for buttons.
-
-– Fixed strafe animation inconsistency."
-fit_content = true
-
-[node name="HSeparator5" type="HSeparator" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped"]
-layout_mode = 2
-
-[node name="V0_2_0" type="VBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="PostTitleDate" type="HBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_2_0"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 24
-
-[node name="Version" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_2_0/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("1_54bft")
-theme_override_font_sizes/font_size = 24
-text = "V0.2.0"
-
-[node name="ChangeDate" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_2_0/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
-text = "June 3, 2025"
-horizontal_alignment = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_2_0"]
-layout_mode = 2
-text = "– Overhauled main menu with new game logo and News tab (contents WIP).
-
-– Added loading screen with useful tips.
-
-– Added dev console menu which can be accessed by pressing [~] while game is paused.
-
-– Other minor UI changes.
-
-– Sprites are now better optimized.
-
-– Fixed an issue with volume sliders which used to set sfx level incorrectly."
-fit_content = true
-
-[node name="HSeparator4" type="HSeparator" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped"]
-layout_mode = 2
-
-[node name="V0_1_3" type="VBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="PostTitleDate" type="HBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_3"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 24
-
-[node name="Version" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_3/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("1_54bft")
-theme_override_font_sizes/font_size = 24
-text = "V0.1.3"
-
-[node name="ChangeDate" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_3/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
-text = "May 17, 2025"
-horizontal_alignment = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_3"]
-layout_mode = 2
-text = "– Added settings menu with music and sfx volume sliders.
-
-– Improved UI background with gradient variations."
-fit_content = true
-
-[node name="HSeparator3" type="HSeparator" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped"]
-layout_mode = 2
-
-[node name="V0_1_2" type="VBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="PostTitleDate" type="HBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_2"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 24
-
-[node name="Version" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_2/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("1_54bft")
-theme_override_font_sizes/font_size = 24
-text = "V0.1.2"
-
-[node name="ChangeDate" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_2/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
-text = "May 16, 2025"
-horizontal_alignment = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_2"]
-layout_mode = 2
-text = "– Added proper main menu along with the Changes tab (YOU ARE HERE :D).
-
-– Slightly improved Game Over screen."
-fit_content = true
-
-[node name="HSeparator" type="HSeparator" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped"]
-layout_mode = 2
-
-[node name="V0_1_1" type="VBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="PostTitleDate" type="HBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_1"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 24
-
-[node name="Version" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_1/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("1_54bft")
-theme_override_font_sizes/font_size = 24
-text = "V0.1.1"
-
-[node name="ChangeDate" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_1/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
-text = "May 11, 2025"
-horizontal_alignment = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_1"]
-layout_mode = 2
-text = "– Added The Ship upgrade which can be achieved by destroying 50 meteors.
-
-– Upgrade increases player speed, laser capacity, recharge speed and decreases reload time.
-
-– Meteor spawn speed was slightly adjusted."
-fit_content = true
-
-[node name="HSeparator2" type="HSeparator" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped"]
-layout_mode = 2
-
-[node name="V0_1_0" type="VBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="PostTitleDate" type="HBoxContainer" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_0"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 24
-
-[node name="Version" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_0/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("1_54bft")
-theme_override_font_sizes/font_size = 24
-text = "V0.1.0"
-
-[node name="ChangeDate" type="Label" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_0/PostTitleDate"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
-text = "May 10, 2025"
-horizontal_alignment = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Text/TitleContents/ContentMargin/ScrollContainer/Grouped/V0_1_0"]
-layout_mode = 2
-text = "– Fixed a bug when meteor counter didn't reset after restart."
-fit_content = true

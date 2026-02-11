@@ -578,6 +578,7 @@ frame = 47
 frame_progress = 1.0
 
 [node name="MobileGUI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="PauseBtn" type="TextureButton" parent="MobileGUI"]
 process_mode = 3
